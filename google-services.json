@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "730817624769",
+    "project_id": "mypathrecorder-af590",
+    "storage_bucket": "mypathrecorder-af590.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730817624769:android:ff1f563e3d5f31edf2b240",
+        "android_client_info": {
+          "package_name": "com.example.mypathrecorder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJjYO2hF7hRm-DQEbQBPo6Mf0HMAEHmjU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
