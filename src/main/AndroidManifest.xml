@@ -20,17 +20,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyPathRecorder"
         tools:targetApi="31">
-        <service
-            android:name=".data.source.StepService"
-            android:enabled="true"
-            android:exported="true"></service>
-        <service
-            android:name=".data.source.LocationService"
-            android:enabled="true"
-            android:exported="true" />
-
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.cropimage.CropImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.Login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +32,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".presentation.CachingService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".data.source.StepService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".data.source.LocationService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".presentation.Main.MainActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

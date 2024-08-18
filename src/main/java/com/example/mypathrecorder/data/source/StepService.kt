@@ -19,10 +19,9 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@AndroidEntryPoint
-class StepService : Service(), SensorEventListener {
 
-    @Inject lateinit var sensorManager: SensorManager
+class StepService @Inject constructor(private val sensorManager: SensorManager) : Service(), SensorEventListener {
+
     private var stepCounterSensor: Sensor? =null
     private var initSteps = 0
 

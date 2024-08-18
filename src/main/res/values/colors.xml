@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="widgetOrange">#fffca311</color>
+    <color name="button">#ff14213d</color>
+    <color name="border">#ffe5e5e5</color>
 </resources>

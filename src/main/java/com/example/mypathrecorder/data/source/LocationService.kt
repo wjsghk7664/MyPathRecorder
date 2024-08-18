@@ -18,10 +18,7 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@AndroidEntryPoint
-class LocationService : Service() {
-
-    @Inject lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+class LocationService @Inject constructor(private val fusedLocationProviderClient: FusedLocationProviderClient) : Service() {
 
     private lateinit var locationCallback:LocationCallback
 

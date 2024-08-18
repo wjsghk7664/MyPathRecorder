@@ -1,4 +1,4 @@
-package com.example.mypathrecorder.presentation
+package com.example.mypathrecorder.presentation.Main
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

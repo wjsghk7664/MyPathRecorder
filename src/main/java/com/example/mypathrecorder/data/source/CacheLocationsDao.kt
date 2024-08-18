@@ -13,6 +13,12 @@ interface CacheLocationsDao {
     @Query("SELECT * FROM cache_location_table ORDER BY time ASC")
     suspend fun getLocations(): List<CacheLocation>
 
+    @Query("SELECT * FROM cache_location_table WHERE time < :upper ORDER BY time ASC")
+    suspend fun getTimeRangeLocations(upper:Long): List<CacheLocation>
+
+    @Query("SELECT * FROM cache_location_table WHERE lat >= :latR AND lat <= :latU AND lon >= :lonR AND lon <= :lonU ORDER BY time ASC")
+    suspend fun getLatLonRangeLocations(latR:Long,latU:Long, lonR:Long, lonU:Long): List<CacheLocation>
+
     @Query("SELECT * FROM cache_location_table WHERE marker != null OR img != null ORDER BY time ASC")
     suspend fun getCheckedLocations(): List<CacheLocation>
 
