@@ -38,7 +38,7 @@ class CropImageView(private val context:Context, attrs: AttributeSet) : Constrai
     private val rect = Paint().apply {
         color = context.getColor(R.color.black)
         style = Paint.Style.STROKE
-        strokeWidth = dpToPx(context,1f)
+        strokeWidth = dpToPx(context,2f)
     }
     private val iv: ImageView by lazy {
         ImageView(context).apply {

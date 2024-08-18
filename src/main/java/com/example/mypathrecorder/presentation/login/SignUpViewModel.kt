@@ -1,4 +1,4 @@
-package com.example.mypathrecorder.presentation.Login
+package com.example.mypathrecorder.presentation.login
 
 import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel

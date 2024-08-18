@@ -1,7 +1,6 @@
-package com.example.mypathrecorder.presentation.Login
+package com.example.mypathrecorder.presentation.login
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.mypathrecorder.data.model.User
 import com.example.mypathrecorder.domain.CheckLoginUseCase
 import com.example.mypathrecorder.domain.GetCacheLoginData
@@ -10,7 +9,6 @@ import com.example.mypathrecorder.presentation.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel

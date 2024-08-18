@@ -1,4 +1,4 @@
-package com.example.mypathrecorder.presentation.Main
+package com.example.mypathrecorder.presentation.main
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,17 +1,12 @@
-package com.example.mypathrecorder.presentation.Login
+package com.example.mypathrecorder.presentation.login
 
-import android.app.Activity
 import android.content.Intent
-import android.content.pm.ResolveInfo
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment

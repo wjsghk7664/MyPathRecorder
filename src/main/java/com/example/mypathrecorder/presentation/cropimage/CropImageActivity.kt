@@ -1,8 +1,5 @@
 package com.example.mypathrecorder.presentation.cropimage
 
-import android.app.Activity
-import android.content.Intent
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -11,11 +8,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.mypathrecorder.R
 import com.example.mypathrecorder.databinding.ActivityCropImageBinding
-import com.example.mypathrecorder.presentation.Login.LoginActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.io.ByteArrayOutputStream
 
 class CropImageActivity : AppCompatActivity() {
 

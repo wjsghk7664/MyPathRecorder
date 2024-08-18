@@ -1,4 +1,4 @@
-package com.example.mypathrecorder.presentation.Login
+package com.example.mypathrecorder.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,12 +10,10 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.mypathrecorder.R
-import com.example.mypathrecorder.data.model.User
 import com.example.mypathrecorder.databinding.FragmentLoginBinding
-import com.example.mypathrecorder.presentation.Main.MainActivity
+import com.example.mypathrecorder.presentation.main.MainActivity
 import com.example.mypathrecorder.presentation.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -51,9 +49,11 @@ class LoginFragment : Fragment() {
                 when(it){
                     is UiState.Init -> null
                     is UiState.Success -> {
+                        Toast.makeText(requireActivity(), "로그인 성공", Toast.LENGTH_SHORT).show()
                         val intent = Intent(requireContext(),MainActivity::class.java)
                         intent.putExtra("user",it.data)
                         startActivity(intent)
+                        requireActivity().finish()
                     }
                     is UiState.Failure ->{
                         loginProgressBar.visibility = View.GONE
