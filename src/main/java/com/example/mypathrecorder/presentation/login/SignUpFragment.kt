@@ -1,5 +1,6 @@
 package com.example.mypathrecorder.presentation.login
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -16,7 +17,7 @@ import com.example.mypathrecorder.R
 import com.example.mypathrecorder.databinding.FragmentSignUpBinding
 import com.example.mypathrecorder.presentation.UiState
 import com.example.mypathrecorder.presentation.cropimage.CropImageActivity
-import com.example.mypathrecorder.presentation.cropimage.CropImageEventBus
+import com.example.mypathrecorder.util.loadBitmapCache
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -44,23 +45,33 @@ class SignUpFragment : Fragment() {
 
         getUiState()
         initView()
-        getCropImg()
     }
 
     private fun initView() = with(binding){
         signupIvBack.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
+        val getUri = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
+            if(result.resultCode == Activity.RESULT_OK){
+                result.data?.getStringExtra("uri")?.let {
+                    profile = loadBitmapCache(it,requireContext()).getOrNull()
+                    signupIvProfile.setImageBitmap(profile)
+                }
 
+            }
+        }
         val photoPicker = registerForActivityResult(ActivityResultContracts.PickVisualMedia()){ uri ->
             if(uri!=null){
-                startActivity(Intent(requireActivity(),CropImageActivity::class.java).apply { putExtra("uri",uri.toString()) })
+                getUri.launch(Intent(requireActivity(),CropImageActivity::class.java).apply { putExtra("uri",uri.toString()) })
             }
             else{
                 profile=null
                 signupIvProfile.setImageResource(R.drawable.ic_person)
             }
         }
+
+
+
         signupIvProfile.setOnClickListener {
             photoPicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
@@ -73,17 +84,6 @@ class SignUpFragment : Fragment() {
             val password = signupEtPassword.text.toString()
             val name = signupEtName.text.toString()
             viewModel.signUp(id, password, name, profile)
-        }
-    }
-
-    private fun getCropImg(){
-        viewLifecycleOwner.lifecycleScope.launch {
-            CropImageEventBus.event.collectLatest {
-                it?.let {
-                    profile=it
-                    binding.signupIvProfile.setImageBitmap(it)
-                }
-            }
         }
     }
 

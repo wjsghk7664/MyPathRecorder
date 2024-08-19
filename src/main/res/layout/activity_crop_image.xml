@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:text="Free"
+            android:text="@string/crop_ratio_free"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:text="1:1"
+            android:text="@string/crop_ratio_1_1"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:text="3:4"
+            android:text="@string/crop_ratio_3_4"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:text="4:3"
+            android:text="@string/crop_ratio_4_3"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:text="9:16"
+            android:text="@string/crop_ratio_9_16"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:text="16:9"
+            android:text="@string/crop_ratio_16_9"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:text="Full"
+            android:text="@string/crop_ratio_full"
             android:textColor="@color/white" />
     </LinearLayout>
 
@@ -111,9 +111,17 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:background="@drawable/login_corner_container"
-            android:text="crop"
+            android:background="@android:color/transparent"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="@string/crop_crop"
             android:textColor="@color/white" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:background="@color/border"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/crop_btn_cancel"
@@ -121,8 +129,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_weight="1"
-            android:background="@drawable/login_corner_container"
-            android:text="cancel"
+            android:background="@android:color/transparent"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="@string/crop_cancel"
             android:textColor="@color/white" />
 
     </LinearLayout>

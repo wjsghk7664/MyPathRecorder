@@ -1,5 +1,7 @@
 package com.example.mypathrecorder.presentation.cropimage
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -8,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.mypathrecorder.R
 import com.example.mypathrecorder.databinding.ActivityCropImageBinding
+import com.example.mypathrecorder.util.saveBitmapCache
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -62,11 +65,11 @@ class CropImageActivity : AppCompatActivity() {
         }
         cropBtnCrop.setOnClickListener {
             val croppedBitmap = cropCiv.CropBitmap()?.getOrNull()
-            CoroutineScope(Dispatchers.IO).launch {
-                CropImageEventBus.emitCroppedImg(croppedBitmap)
-            }.invokeOnCompletion {
-                finish()
-            }
+            if(croppedBitmap==null) finish()
+            val uri = saveBitmapCache(croppedBitmap!!,"cropImage", this@CropImageActivity).getOrNull()
+            Log.d("캐시",uri?:"")
+            setResult(Activity.RESULT_OK, Intent().apply { putExtra("uri",uri) })
+            finish()
         }
     }
 

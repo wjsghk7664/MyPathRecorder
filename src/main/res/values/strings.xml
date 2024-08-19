@@ -8,4 +8,13 @@
     <string name="login_autoLogin">자동 로그인</string>
     <string name="login">로그인</string>
     <string name="signup">회원가입</string>
+    <string name="crop_ratio_free">Free</string>
+    <string name="crop_ratio_1_1">1:1</string>
+    <string name="crop_ratio_3_4">3:4</string>
+    <string name="crop_ratio_4_3">4:3</string>
+    <string name="crop_ratio_9_16">9:16</string>
+    <string name="crop_ratio_16_9">16:9</string>
+    <string name="crop_ratio_full">Full</string>
+    <string name="crop_crop">crop</string>
+    <string name="crop_cancel">cancel</string>
 </resources>
