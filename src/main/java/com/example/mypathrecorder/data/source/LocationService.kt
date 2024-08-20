@@ -5,6 +5,7 @@ import android.app.Service
 import android.content.Intent
 import android.location.Location
 import android.os.IBinder
+import com.example.mypathrecorder.data.repository.MovementDataRepository
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
@@ -18,12 +19,13 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class LocationService @Inject constructor(private val fusedLocationProviderClient: FusedLocationProviderClient) : Service() {
+@AndroidEntryPoint
+class LocationService : Service() {
+
+    @Inject lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    @Inject lateinit var movementDataRepository: MovementDataRepository
 
     private lateinit var locationCallback:LocationCallback
-
-    private val _locationSharedFlow = MutableSharedFlow<Location>()
-    val locationSharedFlow = _locationSharedFlow.asSharedFlow()
 
     override fun onCreate() {
         super.onCreate()
@@ -33,7 +35,7 @@ class LocationService @Inject constructor(private val fusedLocationProviderClien
                 locationResult?.let {
                     for(location in locationResult.locations){
                         CoroutineScope(Dispatchers.IO).launch {
-                            _locationSharedFlow.emit(location)
+                            movementDataRepository.setLocation(location)
                         }
                     }
                 }

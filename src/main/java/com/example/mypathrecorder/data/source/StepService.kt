@@ -9,6 +9,7 @@ import android.hardware.SensorManager
 import android.os.IBinder
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.mypathrecorder.data.repository.MovementDataRepository
 
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -19,14 +20,14 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@AndroidEntryPoint
+class StepService : Service(), SensorEventListener {
 
-class StepService @Inject constructor(private val sensorManager: SensorManager) : Service(), SensorEventListener {
+    @Inject lateinit var sensorManager: SensorManager
+    @Inject lateinit var movementDataRepository: MovementDataRepository
 
     private var stepCounterSensor: Sensor? =null
     private var initSteps = 0
-
-    private val _stepSharedFlow = MutableSharedFlow<Int>()
-    val stepSharedFlow =_stepSharedFlow.asSharedFlow()
 
     override fun onCreate() {
         super.onCreate()
@@ -59,7 +60,7 @@ class StepService @Inject constructor(private val sensorManager: SensorManager) 
                 }
                 val steps = event.values[0].toInt() - initSteps
                 CoroutineScope(Dispatchers.IO).launch {
-                    _stepSharedFlow.emit(steps)
+                    movementDataRepository.setStep(steps)
                 }
 
             }

@@ -101,6 +101,7 @@ class SignUpFragment : Fragment() {
                         signupProgressBar.visibility=View.GONE
                         val notify=it.e.split("F")
                         if(notify[1].isNotEmpty()) Toast.makeText(requireActivity(), notify[1], Toast.LENGTH_SHORT).show()
+                        signupTvNotify.visibility = View.VISIBLE
                         signupTvNotify.setText(notify[0])
                     }
                 }
